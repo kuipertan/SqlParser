@@ -1,0 +1,801 @@
+
+
+
+
+
+
+
+
+
+********Group by statistic********
+rec_feature_response.bid, 10
+rec_feature_realresponse.bid, 10
+rec_feature_visit.l_date, 10
+ods_mercury_cm_source.cid, 10
+rec_feature_realresponse.cid, 10
+rec_feature_visit.cid, 10
+rec_feature_response.cid, 10
+ods_mercury_cm_source.gid, 9
+a.cid, 8
+.cid, 8
+user_visit_feature.cid, 8
+user_visit_feature.l_date, 8
+user_visit_feature.gid, 8
+ods_mercury_cm_source.ref_page, 5
+rec_pos_neg_count.cid, 5
+rec_pos_neg_count.bid, 5
+order_gid_tmp_table_removal.order_id, 2
+news_from_hbase.nb_cid, 2
+clean_finish_useraction.customer, 1
+raw_proxima_rec_vavscore.cid, 1
+markettag_gid_bhv_time.gid, 1
+mds_mercury_url_day.url, 1
+clean_finish_useraction.iid, 1
+raw_kafka_input_dt0.gid, 1
+.import_flag, 1
+news_from_hbase.np_bfdcatveclist, 1
+
+********Functions statistic********
+count, 162
+date_sub, 18
+sum, 11
+max, 8
+GetUniqId, 2
+concat_ws, 2
+percentile_approx, 1
+importdata2redis, 1
+
+********Join statistic********
+tmp_zhihengjiang_market_cp_score~tmp_zhihengjiang_market_cp_coverage
+	tmp_zhihengjiang_market_cp_score.algo_id,tmp_zhihengjiang_market_cp_coverage.algo_id
+tmp_qizhang_up_e_market_pricesensitivity_score~tmp_qizhang_up_e_market_pricesensitivity_amount
+	tmp_qizhang_up_e_market_pricesensitivity_score.algo_id,tmp_qizhang_up_e_market_pricesensitivity_amount.algo_id
+tmp_zhihengjiang_market_cp_score~tmp_zhihengjiang_market_cp_dist
+	tmp_zhihengjiang_market_cp_score.algo_id,tmp_zhihengjiang_market_cp_dist.algo_id
+tmp_zhihengjiang_curDmd_cate_score~tmp_zhihengjiang_curDmd_cate_dist
+	tmp_zhihengjiang_curDmd_cate_score.algo_id,tmp_zhihengjiang_curDmd_cate_dist.algo_id
+tmp_qizhang_up_e_market_pricesensitivity_score~tmp_qizhang_up_e_market_pricesensitivity_coverage
+	tmp_qizhang_up_e_market_pricesensitivity_score.algo_id,tmp_qizhang_up_e_market_pricesensitivity_coverage.algo_id
+tmp_zhihengjiang_curDmd_cate_score~tmp_zhihengjiang_curDmd_cate_coverage
+	tmp_zhihengjiang_curDmd_cate_score.algo_id,tmp_zhihengjiang_curDmd_cate_coverage.algo_id
+tmp_zhihengjiang_market_cp_score~tmp_zhihengjiang_market_cp_amount
+	tmp_zhihengjiang_market_cp_score.algo_id,tmp_zhihengjiang_market_cp_amount.algo_id
+tmp_qizhang_up_e_market_consumelevel_score~tmp_qizhang_up_e_market_consumelevel_coverage
+	tmp_qizhang_up_e_market_consumelevel_score.algo_id,tmp_qizhang_up_e_market_consumelevel_coverage.algo_id
+tmp_qizhang_up_e_market_pricesensitivity_score~tmp_qizhang_up_e_market_pricesensitivity_dist
+	tmp_qizhang_up_e_market_pricesensitivity_score.algo_id,tmp_qizhang_up_e_market_pricesensitivity_dist.algo_id
+tmp_qizhang_up_e_market_consumelevel_score~tmp_qizhang_up_e_market_consumelevel_amount
+	tmp_qizhang_up_e_market_consumelevel_score.algo_id,tmp_qizhang_up_e_market_consumelevel_amount.algo_id
+tmp_zhihengjiang_curDmd_cate_score~tmp_zhihengjiang_curDmd_cate_amount
+	tmp_zhihengjiang_curDmd_cate_score.algo_id,tmp_zhihengjiang_curDmd_cate_amount.algo_id
+tmp_qizhang_up_e_market_consumelevel_score~tmp_qizhang_up_e_market_consumelevel_dist
+	tmp_qizhang_up_e_market_consumelevel_score.algo_id,tmp_qizhang_up_e_market_consumelevel_dist.algo_id
+
+********Where condition statistic********
+ods_mercury_cm_source.dt used times:25
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' GROUP BY cid, gid
+	,SELECT ref_page FROM ods_mercury_cm_source WHERE dt > '2016-01-28' AND dt <= '2016-02-27' GROUP BY ref_page
+	,SELECT ref_page FROM ods_mercury_cm_source WHERE dt > '2016-01-28' AND dt <= '2016-02-27' GROUP BY ref_page
+	,SELECT cid, ref_page FROM ods_mercury_cm_source WHERE dt > '2016-01-28' AND dt <= '2016-02-27' GROUP BY cid, ref_page
+	,SELECT cid, ref_page FROM ods_mercury_cm_source WHERE dt > '2016-01-28' AND dt <= '2016-02-27' GROUP BY cid, ref_page
+	,select cid,count(1) from ods_mercury_cm_source where dt='2016-02-28' group by cid
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND mapped = '1' GROUP BY gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND is_newgid = '1' GROUP BY cid, gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND mapped = '1' GROUP BY cid, gid
+	,SELECT cid, ref_page FROM ods_mercury_cm_source WHERE dt = '2016-02-28' GROUP BY cid, ref_page
+	,select 'Call',count(1) from ods_mercury_cm_source where dt='2016-02-28'
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND is_newgid = '1' GROUP BY gid
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' GROUP BY gid
+	,select 'Call',count(1) from ods_mercury_cm_source where dt>'2016-01-29' and dt<='2016-02-28'
+	,select 'Call',count(1) from ods_mercury_cm_source where dt>'2016-01-29' and dt<='2016-02-28'
+	,SELECT ref_page FROM ods_mercury_cm_source WHERE dt = '2016-02-28' GROUP BY ref_page
+	,select cid,count(1) from ods_mercury_cm_source where dt>'2016-01-29' and dt<='2016-02-28' group by cid
+	,select cid,count(1) from ods_mercury_cm_source where dt>'2016-01-29' and dt<='2016-02-28' group by cid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' AND is_newgid = '1' GROUP BY cid, gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' AND is_newgid = '1' GROUP BY cid, gid
+	,SELECT cid, ref_page FROM ods_mercury_cm_source WHERE dt = '2016-02-28' GROUP BY cid, ref_page
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' GROUP BY gid
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' GROUP BY gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' GROUP BY cid, gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' GROUP BY cid, gid
+clean_citylevel_all_v1.l_date used times:25
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+	,select name,level,alias            from up.clean_citylevel_all_v1            where l_date='working'            limit 500000
+clean_userinfo_statistics_v1.l_date used times:25
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+	,select cellphone_num,imei_num,gid_num,cellphone_imei_num,all_num,update_time            from up.clean_userinfo_statistics_v1            where l_date='working'            limit 500000
+clean_shoppingdistrict_all_v1.l_date used times:25
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+	,select id,name,province,city,type,level,parent_id,adjacent,longitude,latitude            from up.clean_shoppingdistrict_all_v1            where l_date='working'            limit 500000
+clean_category_all_v1.l_date used times:25
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+	,select category_id,category_name,type,parent_name,parent_id,level            from up.clean_category_all_v1            where l_date='working'            limit 500000
+clean_phoneinfo_all_v1.l_date used times:25
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+	,select phone_pfx,province,city,type            from up.clean_phoneinfo_all_v1            where l_date='working'            limit 500000
+up_all_evaluate.tag_name used times:20
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='pricesensitivity'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cosume_period'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='category'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='category'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='category'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cc'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='category'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='consumelevel'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cc'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='consumelevel'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='pricesensitivity'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cc'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='pricesensitivity'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cosume_period'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cosume_period'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='pricesensitivity'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cc'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='cosume_period'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='consumelevel'            limit 500000
+	,select algo_id,day_ofst,score,coverage,amount,value_dist,eval_algo_ver,l_date,extend            from up_all_evaluate            where tag_name='consumelevel'            limit 500000
+user_visit_feature.cid used times:16
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cshanrong_grsc'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'C17k' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'C17k'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cjiuxian' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cjiuxian'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Ctaipingyang'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cmiyabaobei'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Czgc_pc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Czgc_pc'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Ctaipingyang'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cyiyaowang'
+user_visit_feature.l_date used times:16
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cshanrong_grsc'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'C17k' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'C17k'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cjiuxian' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cjiuxian'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Ctaipingyang'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cmiyabaobei'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Czgc_pc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Czgc_pc'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Ctaipingyang'
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT * FROM portrait.user_visit_feature WHERE l_date = '2016-02-29' AND cid = 'Cyiyaowang'
+rec_feature_realresponse.realresponse_1day used times:10
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_pos_bais.bid used times:10
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+sc_feedback_item_news_feature.cid used times:10
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+rec_feature_response.l_date used times:10
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_feature_response.response_1day used times:10
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+sc_realresponse_item_news_feature.bid used times:10
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+tc_visit_item_news_feature.cid used times:10
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cyiyaowang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='C17k'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cmiyabaobei'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Ctaipingyang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Czgc_pc'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cdianyingwang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Ctaipingyang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cshanrong_grsc'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cjiuxian'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='C17k'
+tc_feedback_item_news_feature.l_date used times:10
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+tc_realresponse_item_news_feature.l_date used times:10
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+sc_visit_item_news_feature.cid used times:10
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='C17k'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='C17k'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang'
+rec_feature_realresponse.bid used times:10
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_feature_visit.cid used times:10
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' GROUP BY cid, l_date
+sc_realresponse_item_news_feature.l_date used times:10
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+tc_feedback_item_news_feature.bid used times:10
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+tc_feedback_item_news_feature.cid used times:10
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+tc_realresponse_item_news_feature.cid used times:10
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+tc_realresponse_item_news_feature.bid used times:10
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.tc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+sc_realresponse_item_news_feature.cid used times:10
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_realresponse_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+rec_pos_bais.l_date used times:10
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+sc_feedback_item_news_feature.bid used times:10
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+sc_feedback_item_news_feature.l_date used times:10
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.sc_feedback_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+sc_visit_item_news_feature.l_date used times:10
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='C17k'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cshanrong_grsc'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='C17k'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Ctaipingyang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cyiyaowang'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Czgc_pc'
+	,select * from portrait.sc_visit_item_news_feature where l_date='2016-03-01' and cid='Cdianyingwang'
+rec_feature_realresponse.cid used times:10
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+tc_visit_item_news_feature.l_date used times:10
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cyiyaowang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='C17k'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cmiyabaobei'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Ctaipingyang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Czgc_pc'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cdianyingwang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Ctaipingyang'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cshanrong_grsc'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='Cjiuxian'
+	,select * from portrait.tc_visit_item_news_feature where l_date='2016-03-01'  and cid='C17k'
+rec_feature_response.cid used times:10
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_feature_response.bid used times:10
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS response, cid, bid FROM portrait.rec_feature_response WHERE response_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_feature_realresponse.l_date used times:10
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND bid = '4FD301F6_0119_6C64_80BD_F0401D144ABD' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '3168D0D4_1D1C_13BB_EB2D_55C1B4655782' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND bid = '4EFE0D90_2CD2_5677_2540_5E176CBACCD5' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'B5A09893_6D0E_F634_D0DE_9510A50DB3AF' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' AND bid = '949722CF_12F7_523A_EE21_E3D591B7E755' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' AND bid = '8E368122_81D1_E37F_5DF0_92A97767F7FA' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' AND bid = '9D6E4F0F_2395_8D67_9EB6_21B56CFE9993' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' AND bid = '808F4A2B_27DF_745C_FE59_FC20213054E3' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND bid = 'C8D5BD33_6101_7E50_543C_757C396CA005' GROUP BY cid, bid
+	,SELECT count(*) AS realresponse, cid, bid FROM portrait.rec_feature_realresponse WHERE realresponse_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND bid = 'F7734668_CC49_8C4F_24C5_EA8B6728E394' GROUP BY cid, bid
+rec_feature_visit.l_date used times:10
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' GROUP BY cid, l_date
+rec_pos_bais.cid used times:10
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='C17k' and bid='3168D0D4_1D1C_13BB_EB2D_55C1B4655782'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Czgc_pc' and bid='949722CF_12F7_523A_EE21_E3D591B7E755'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cshanrong_grsc' and bid='4FD301F6_0119_6C64_80BD_F0401D144ABD'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+	,select * from portrait.rec_pos_bais where l_date='2016-03-01' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005'
+rec_feature_visit.visit_1day used times:10
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cmiyabaobei' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Czgc_pc' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'C17k' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cjiuxian' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cdianyingwang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Ctaipingyang' GROUP BY cid, l_date
+	,SELECT count(*) AS visit, cid, l_date FROM portrait.rec_feature_visit WHERE visit_1day > 0 AND l_date = '2016-03-01' AND cid = 'Cyiyaowang' GROUP BY cid, l_date
+mds_mercury_url_title_content_day.dt used times:9
+	,select count(1) from mds_mercury_url_title_content_day where dt>'2016-01-28' and dt<='2016-02-27'
+	,select count(1) from mds_mercury_url_title_content_day where dt>'2016-01-28' and dt<='2016-02-27'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt='2016-02-27' and is_valid='1'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt='2016-02-27' and is_valid='0'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='0'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='0'
+	,select count(1) from mds_mercury_url_title_content_day where dt='2016-02-27'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='1'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='1'
+mds_mercury_url_day.dt used times:8
+	,select count(1)from mds_mercury_url_day where dt='all_2016-02-27'
+	,select count(1)from mds_mercury_url_day where dt='new_2016-02-27'
+	,select count(1)from mds_mercury_url_day where dt>'new_2016-01-28' and dt<='new_2016-02-27'
+	,select count(1)from mds_mercury_url_day where dt>'new_2016-01-28' and dt<='new_2016-02-27'
+	,SELECT url FROM mds_mercury_url_day WHERE dt > 'all_2016-01-28' AND dt <= 'all_2016-02-27' GROUP BY url
+	,SELECT url FROM mds_mercury_url_day WHERE dt > 'all_2016-01-28' AND dt <= 'all_2016-02-27' GROUP BY url
+	,select count(1)from mds_mercury_url_day where dt>'all_2016-01-28' and dt<='all_2016-02-27'
+	,select count(1)from mds_mercury_url_day where dt>'all_2016-01-28' and dt<='all_2016-02-27'
+user_visit_feature.user_visit_1_days used times:8
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cshanrong_grsc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'C17k' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cjiuxian' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cmiyabaobei' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Czgc_pc' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Ctaipingyang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+	,SELECT cid, gid, l_date FROM portrait.user_visit_feature WHERE l_date = '2016-03-01' AND cid = 'Cyiyaowang' AND user_visit_1_days > 0 AND user_visit_1_days IS NOT NULL GROUP BY cid, gid, l_date
+rec_pos_neg_count.l_date used times:6
+	,select * from portrait.rec_pos_neg_count where l_date='2016-02-29'
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005' group by cid, bid
+mds_mercury_url_seg_kw_tag.dt used times:6
+	,SELECT url FROM mds_mercury_url_seg_kw_tag WHERE dt = 'work'
+	,select count(1) from mds_mercury_url_seg_kw_tagwhere dt>'tag_2016-01-28' and dt<='tag_2016-02-27'
+	,select count(1) from mds_mercury_url_seg_kw_tagwhere dt>'tag_2016-01-28' and dt<='tag_2016-02-27'
+	,select count(1) from mds_mercury_url_seg_kw_tagwhere dt='tag_2016-02-27'
+	,SELECT url FROM mds_mercury_url_seg_kw_tag WHERE dt = 'work'
+	,SELECT url FROM mds_mercury_url_seg_kw_tag WHERE dt = 'work'
+rec_pos_neg_count.cid used times:5
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005' group by cid, bid
+rec_pos_neg_count.bid used times:5
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='C17k' and bid='8E368122_81D1_E37F_5DF0_92A97767F7FA' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cyiyaowang' and bid='F7734668_CC49_8C4F_24C5_EA8B6728E394' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='B5A09893_6D0E_F634_D0DE_9510A50DB3AF' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Cdianyingwang' and bid='808F4A2B_27DF_745C_FE59_FC20213054E3' group by cid, bid
+	,select sum(pos_num) as pos_num, sum(neg_num) as neg_num from portrait.rec_pos_neg_count where l_date = '2016-02-29' and cid='Ctaipingyang' and bid='C8D5BD33_6101_7E50_543C_757C396CA005' group by cid, bid
+mds_mercury_url_title_content_day.is_valid used times:4
+	,select count(1)from mds_mercury_url_title_content_daywhere dt='2016-02-27' and is_valid='1'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt='2016-02-27' and is_valid='0'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='0'
+	,select count(1)from mds_mercury_url_title_content_daywhere dt>'2016-01-28' and dt<='2016-02-27' and is_valid='1'
+up_market_isearch_predict.algo_id used times:3
+	,select count(1) from up_market_isearch_predict        where l_date='2016-02-29' and algo_id='MKT_IS_INC_v1.0_2016-02-29'
+	,select * from up_market_isearch_predict where l_date='2016-02-29' and algo_id='MKT_IS_INC_v1.0_2016-02-29' limit 5
+	,select * from up_market_isearch_predict where l_date='2016-02-29' and algo_id='MKT_IS_ALL_v1.0_2016-02-29' limit 5
+up_market_isearch_predict.l_date used times:3
+	,select count(1) from up_market_isearch_predict        where l_date='2016-02-29' and algo_id='MKT_IS_INC_v1.0_2016-02-29'
+	,select * from up_market_isearch_predict where l_date='2016-02-29' and algo_id='MKT_IS_INC_v1.0_2016-02-29' limit 5
+	,select * from up_market_isearch_predict where l_date='2016-02-29' and algo_id='MKT_IS_ALL_v1.0_2016-02-29' limit 5
+ods_mercury_cm_source.is_newgid used times:3
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND is_newgid = '1' GROUP BY cid, gid
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND is_newgid = '1' GROUP BY gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt > '2016-01-29' AND dt <= '2016-02-28' AND is_newgid = '1' GROUP BY cid, gid
+raw_internetfeature.l_date used times:2
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType!='' and nettype!=''  and ds='Mobile'  limit 1000
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType='3G'  and ds='Mobile'  limit 1000
+up_marketft_cc_predict.algo_id used times:2
+	,select * from up_marketft_cc_predict where l_date='2016-02-29' and algo_id='MKT_CC_ALL_v1.0_2016-02-29' limit 5
+	,select * from up_marketft_cc_predict where l_date='2016-02-29' and algo_id='MKT_CC_INC_v1.0_2016-02-29' limit 5
+sc_response_item_news_feature.l_date used times:2
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+order_gid_tmp_table_removal.l_date used times:2
+	,select concat_ws(',',order_id,cast(count(gid) as STRING)) from order_gid_tmp_table_removal where l_date='2016-02-28' group by order_id
+	,select concat_ws(',',order_id,cast(count(gid) as STRING)) from order_gid_tmp_table_removal where l_date='2016-02-29' group by order_id
+raw_kafka_input_dt0.l_date used times:2
+	,select count(*) from raw_kafka_input_dt0 where l_date='2016-02-28' and method in('Order','MOrder')
+	,select gid, GetUniqId(em,extend,customer) as id from default.raw_kafka_input_dt0 where l_date='2016-02-28' and GetUniqId(em,extend,customer)!=''group by gid,GetUniqId(em,extend,customer)limit 100
+sc_response_item_news_feature.cid used times:2
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+ods_mercury_cm_source.mapped used times:2
+	,SELECT gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND mapped = '1' GROUP BY gid
+	,SELECT cid, gid FROM ods_mercury_cm_source WHERE dt = '2016-02-28' AND mapped = '1' GROUP BY cid, gid
+raw_internetfeature.netType used times:2
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType!='' and nettype!=''  and ds='Mobile'  limit 1000
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType='3G'  and ds='Mobile'  limit 1000
+markettag_gid_bhv_time.dt used times:2
+	,SELECT gid, count(1) FROM markettag_gid_bhv_time WHERE dt <= '2016-02-29' AND dt >= '2015-11-21' GROUP BY gid
+	,SELECT gid, count(1) FROM markettag_gid_bhv_time WHERE dt <= '2016-02-29' AND dt >= '2015-11-21' GROUP BY gid
+tc_response_item_news_feature.bid used times:2
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+tc_response_item_news_feature.cid used times:2
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+raw_internetfeature.ds used times:2
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType!='' and nettype!=''  and ds='Mobile'  limit 1000
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType='3G'  and ds='Mobile'  limit 1000
+tc_response_item_news_feature.l_date used times:2
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.tc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+sc_response_item_news_feature.bid used times:2
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cmiyabaobei' and bid='4EFE0D90_2CD2_5677_2540_5E176CBACCD5'
+	,select * from portrait.sc_response_item_news_feature where l_date='2016-03-01' and cid='Cjiuxian' and bid='9D6E4F0F_2395_8D67_9EB6_21B56CFE9993'
+up_marketft_cc_predict.l_date used times:2
+	,select * from up_marketft_cc_predict where l_date='2016-02-29' and algo_id='MKT_CC_ALL_v1.0_2016-02-29' limit 5
+	,select * from up_marketft_cc_predict where l_date='2016-02-29' and algo_id='MKT_CC_INC_v1.0_2016-02-29' limit 5
+clean_finish_useraction.method used times:1
+	,select customer,iid, count(gid) as a from up.clean_finish_useraction where l_date = '2016-02-29' and method in ('AddItem','UpdateItem','RmItem') group by customer,iid order by a desc
+rec_monitor_index_PCM_level1.l_date used times:1
+	,select year,month,week,l_date,cid,response_uv,response_pv,defeedback_uv,defeedback_pv,click_num,       total_addcart_num,total_addcart_price,effect_addcart_num,effect_addcart_price,direct_addcart_num,direct_addcart_price,        total_order_num,total_order_price,effect_order_num,effect_order_price,direct_order_num,direct_order_price,origin,mark from portrait.rec_monitor_index_PCM_level1 where l_date = '2016-02-29'
+up_market_pricesensitivity_predict.algo_id used times:1
+	,select count(1) from up_market_pricesensitivity_predict        where l_date='2016-02-29' and algo_id='MKT_PS_INC_v1.0_2016-02-29'
+up_market_pricesensitivity_predict.l_date used times:1
+	,select count(1) from up_market_pricesensitivity_predict        where l_date='2016-02-29' and algo_id='MKT_PS_INC_v1.0_2016-02-29'
+mds_mercury_gid_cid_kw_tag.dt used times:1
+	,select    	count(distinct gid)    from mds_mercury_gid_cid_kw_tag	    where dt='work' and data_type='work'
+raw_kafka_input_dt0.method used times:1
+	,select count(*) from raw_kafka_input_dt0 where l_date='2016-02-28' and method in('Order','MOrder')
+rec_pos_neg_sample_proportion.l_date used times:1
+	,select * from portrait.rec_pos_neg_sample_proportion where l_date='2016-02-29'
+up_curDmd_category_predict.l_date used times:1
+	,select count(1) from up_curDmd_category_predict        where l_date='2016-02-29' and algo_id='curDmd_cate_INC_V1.0_2016-02-29'
+raw_internetfeature.nettype used times:1
+	,select * from up.raw_internetfeature where l_date='2016-01-22' and netType!='' and nettype!=''  and ds='Mobile'  limit 1000
+up_market_consumelevel_predict_info.l_date used times:1
+	,SELECT algo_id, sample_rate FROM up_market_consumelevel_predict_info WHERE l_date = 'working'
+rec_pos_neg_origin_count.l_date used times:1
+	,select * from portrait.rec_pos_neg_origin_count where l_date='2016-02-29'
+mds_cm_gid_uid.cid used times:1
+	,SELECT importdata2redis(gid, client_uid, 'bc', cid, 'string', 'redis.conf') AS import_flag FROM mds_cm_gid_uid WHERE dt = 'input' AND cid = 'Cbfd' AND client_uid IS NOT NULL AND gid IS NOT NULL
+mds_cm_gid_uid.dt used times:1
+	,SELECT importdata2redis(gid, client_uid, 'bc', cid, 'string', 'redis.conf') AS import_flag FROM mds_cm_gid_uid WHERE dt = 'input' AND cid = 'Cbfd' AND client_uid IS NOT NULL AND gid IS NOT NULL
+rec_monitor_index_PCM_level2.l_date used times:1
+	,select year,month,week,l_date,cid,bid,grp,response_uv,response_pv,defeedback_uv,defeedback_pv,       click_num,effect_addcart_num,effect_addcart_price,direct_addcart_num,direct_addcart_price, 	   effect_order_num,effect_order_price,direct_order_num,direct_order_price,banner_name,origin,mark from portrait.rec_monitor_index_PCM_level2 where l_date = '2016-02-29'
+raw_proxima_rec_vavscore.l_date used times:1
+	,select count(*),cid from raw_proxima_rec_vavscore where l_date="2016-03-01" group by cid
+up_market_cosume_period_predict.algo_id used times:1
+	,select count(1) from up_market_cosume_period_predict        where l_date='2016-02-29' and algo_id='MKT_CP_INC_v1.0_2016-02-29'
+rpt_mercury_dsp_tag_cnt.type used times:1
+	,select * from rpt_mercury_dsp_tag_cnt where dt='2016-02-28' and type='30days'
+up_media_category_predict.algo_id used times:1
+	,select * from up_media_category_predict where l_date='2016-02-28' and algo_id='TME_Cmercury_ALL_v1.0_2016-02-28' limit 2
+up_market_pricesensitivity_predict_info.l_date used times:1
+	,SELECT algo_id, sample_rate FROM up_market_pricesensitivity_predict_info WHERE l_date = 'working'
+up_market_consumelevel_predict.l_date used times:1
+	,select count(1) from up_market_consumelevel_predict        where l_date='2016-02-29' and algo_id='MKT_CL_INC_v1.0_2016-02-29'
+temp_inter_ft.l_date used times:1
+	,select count(distinct(gid)) as cnt        from up.temp_inter_ft        where l_date='2016-01-23'
+news_from_hbase."empty" used times:1
+	,select nb_cid,count(*) from news_from_hbase where np_bfdcatveclist is not NULL and np_bfdcatveclist != "empty" group by nb_cid
+clean_finish_useraction.l_date used times:1
+	,select customer,iid, count(gid) as a from up.clean_finish_useraction where l_date = '2016-02-29' and method in ('AddItem','UpdateItem','RmItem') group by customer,iid order by a desc
+up_marketft_consume_sum.dt used times:1
+	,select 		percentile_approx(consume_sum,array(0.6,0.9)) as mid_high_threshold	from up_marketft_consume_sum 	where dt='2016-02-29'
+raw_kafka_event_pageview_dt0.customer used times:1
+	,select count(gid) from raw_kafka_event_pageview_dt0 where customer = 'Cbdyiyuan' and l_date between '2015-10-02' and '2016-02-28'
+up_market_cosume_period_predict.l_date used times:1
+	,select count(1) from up_market_cosume_period_predict        where l_date='2016-02-29' and algo_id='MKT_CP_INC_v1.0_2016-02-29'
+raw_proxima_rec_vavscore."2016-03-01" used times:1
+	,select count(*),cid from raw_proxima_rec_vavscore where l_date="2016-03-01" group by cid
+up_media_category_predict.l_date used times:1
+	,select * from up_media_category_predict where l_date='2016-02-28' and algo_id='TME_Cmercury_ALL_v1.0_2016-02-28' limit 2
+up_market_consumelevel_predict.algo_id used times:1
+	,select count(1) from up_market_consumelevel_predict        where l_date='2016-02-29' and algo_id='MKT_CL_INC_v1.0_2016-02-29'
+rec_monitor_index_level1.l_date used times:1
+	,select year,month,week,l_date,cid,response_uv,response_pv,dfeedback_uv,dfeedback_pv,click_num,total_order_num,total_order_price,effect_order_num,effect_order_price,direct_order_num,direct_order_price from portrait.rec_monitor_index_level1 where l_date = '2016-02-29'
+rec_monitor_index_level2.l_date used times:1
+	,select year,month,week,l_date,cid,bid,grp,response_uv,response_pv,dfeedback_uv,dfeedback_pv,click_num,effect_order_num,effect_order_price,direct_order_num,direct_order_price,banner_name from portrait.rec_monitor_index_level2 where l_date = '2016-02-29'
+up_curDmd_category_predict.algo_id used times:1
+	,select count(1) from up_curDmd_category_predict        where l_date='2016-02-29' and algo_id='curDmd_cate_INC_V1.0_2016-02-29'
+news_from_hbase.np_bfdcatveclist used times:1
+	,select nb_cid,count(*) from news_from_hbase where np_bfdcatveclist is not NULL and np_bfdcatveclist != "empty" group by nb_cid
+mds_mercury_gid_cid_kw_tag.data_type used times:1
+	,select    	count(distinct gid)    from mds_mercury_gid_cid_kw_tag	    where dt='work' and data_type='work'
+rpt_mercury_dsp_tag_cnt.dt used times:1
+	,select * from rpt_mercury_dsp_tag_cnt where dt='2016-02-28' and type='30days'
